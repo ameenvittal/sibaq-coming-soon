@@ -8,10 +8,9 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -38,9 +37,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -78,21 +74,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Sibaq 2026 | Darul Huda National Arts Fest - Chemmad, Kerala" },
+      { name: "description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
+      { name: "keywords", content: "Sibaq 2026, Sibaq, Darul Huda National Arts Fest, Chemmad, Kerala, DHIU, Arts Festival" },
+      { name: "author", content: "Darul Huda Islamic University" },
+      { name: "robots", content: "index, follow" },
+      { property: "og:title", content: "Sibaq 2026 | Darul Huda National Arts Fest" },
+      { property: "og:description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Sibaq 2026" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Sibaq 2026 | Darul Huda National Arts Fest" },
+      { name: "twitter:description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "shortcut icon", href: "/favicon.ico" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,

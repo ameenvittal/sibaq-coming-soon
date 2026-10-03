@@ -70,14 +70,34 @@ body { background: #ffffff; overflow: hidden; }
   position: absolute;
   z-index: 2;
   left: 8%;
-  bottom: 8.3%;
+  bottom: 8%;
   color: var(--foreground);
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1;
   text-shadow: 0 2px 15px color-mix(in oklab, var(--primary) 28%, transparent);
 }
-.poster-title { margin: 0; font-size: clamp(28px, 4.6vw, 76px); letter-spacing: 0; }
+.poster-title {
+  margin: 0;
+  font-size: clamp(28px, 4.6vw, 76px);
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+.poster-subtitle {
+  margin: 0.35em 0 0;
+  font-size: clamp(14px, 1.6vw, 24px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  opacity: 0.95;
+}
+.poster-location {
+  margin: 0.2em 0 0;
+  font-size: clamp(12px, 1.25vw, 19px);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  opacity: 0.85;
+}
 .poster-status { display: flex; align-items: center; gap: 0.3em; margin: 0.5em 0 0; font-size: clamp(13px, 1.4vw, 22px); letter-spacing: 0; }
 .loading-dots::after { content: '..'; display: inline-block; width: 1.2em; overflow: hidden; vertical-align: bottom; animation: dots 1.3s steps(3, end) infinite; }
 
@@ -90,8 +110,10 @@ body { background: #ffffff; overflow: hidden; }
      so the full painting still fits without cropping. */
   .poster { width: 100%; aspect-ratio: 896 / 1200; }
   .rider-track { width: min(78vw, 38vh); width: min(78vw, 38dvh); left: 13%; bottom: 19%; }
-  .poster-copy { left: 12%; bottom: 9.5%; }
-  .poster-title { font-size: clamp(25px, 8vw, 68px); }
+  .poster-copy { left: 12%; bottom: 6.5%; }
+  .poster-title { font-size: clamp(25px, 7.8vw, 64px); }
+  .poster-subtitle { font-size: clamp(13px, 3.8vw, 24px); }
+  .poster-location { font-size: clamp(11px, 3vw, 18px); }
   .poster-status { font-size: clamp(13px, 3.8vw, 23px); }
 }
 @media (prefers-reduced-motion: reduce) {

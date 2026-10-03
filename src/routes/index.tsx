@@ -7,12 +7,16 @@ import wheel from "@/assets/sibaq-wheel.svg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sibaq 2026 — Coming Soon" },
-      { name: "description", content: "Sibaq 2026 is on its way." },
-      { property: "og:title", content: "Sibaq 2026 — Coming Soon" },
-      { property: "og:description", content: "Sibaq 2026 is on its way." },
+      { title: "Sibaq 2026 | Darul Huda National Arts Fest - Chemmad, Kerala" },
+      { name: "description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
+      { name: "keywords", content: "Sibaq 2026, Sibaq, Darul Huda National Arts fest, Chemmad, Kerala, DHIU, Arts Festival" },
+      { property: "og:title", content: "Sibaq 2026 | Darul Huda National Arts Fest" },
+      { property: "og:description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Sibaq 2026" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sibaq 2026 | Darul Huda National Arts Fest" },
+      { name: "twitter:description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
     ],
   }),
   component: Index,
@@ -20,11 +24,15 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="coming-soon" aria-label="Sibaq 2026 loading">
+    <main className="coming-soon" aria-label="Sibaq 2026 - Darul Huda National Arts fest, Chemmad, Kerala">
       <div className="poster">
         <picture>
           <source media="(max-aspect-ratio: 1/1)" srcSet={portrait} />
-          <img className="poster-background" src={landscape} alt="An illustrated blue twilight landscape with coral clouds and shining stars" />
+          <img
+            className="poster-background"
+            src={landscape}
+            alt="Sibaq 2026 - Darul Huda National Arts fest, Chemmad, Kerala"
+          />
         </picture>
         <div className="rider-track" aria-hidden="true">
           <img className="wheel wheel-rear" src={wheel} alt="" />
@@ -33,7 +41,8 @@ function Index() {
         </div>
         <div className="poster-copy">
           <h1 className="poster-title">Sibaq 2026</h1>
-          <p className="poster-status">Loading<span className="loading-dots" aria-hidden="true" /></p>
+          <p className="poster-subtitle">Darul Huda National Arts fest.</p>
+          <p className="poster-location">Chemmad, Kerala.</p>
         </div>
       </div>
     </main>
