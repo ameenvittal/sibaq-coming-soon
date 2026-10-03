@@ -111,32 +111,67 @@ body { background: #ffffff; overflow: hidden; }
 }
 .poster-title {
   margin: 0;
-  font-size: clamp(28px, 4.6vw, 76px);
-  letter-spacing: 0;
-  line-height: 1.05;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.95;
+  text-transform: uppercase;
 }
-.poster-subtitle {
-  margin: 0.35em 0 0;
-  font-size: clamp(14px, 1.6vw, 24px);
+.poster-title-kicker {
+  font-size: clamp(14px, 2.1vw, 36px);
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.12em;
+  color: var(--foreground);
   opacity: 0.95;
+  margin-bottom: 0.14em;
 }
-.poster-location {
-  margin: 0.2em 0 0;
-  font-size: clamp(12px, 1.25vw, 19px);
-  font-weight: 600;
-  line-height: 1.2;
+.poster-title-main {
+  font-size: clamp(26px, 4.4vw, 74px);
+  font-weight: 800;
   letter-spacing: 0.02em;
-  opacity: 0.85;
+  color: var(--foreground);
 }
-.poster-status { display: flex; align-items: center; gap: 0.3em; margin: 0.5em 0 0; font-size: clamp(13px, 1.4vw, 22px); letter-spacing: 0; }
-.loading-dots::after { content: '..'; display: inline-block; width: 1.2em; overflow: hidden; vertical-align: bottom; animation: dots 1.3s steps(3, end) infinite; }
+.poster-status {
+  display: inline-flex;
+  align-items: baseline;
+  margin: 0.6em 0 0;
+  font-size: clamp(13px, 1.5vw, 23px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--foreground);
+  opacity: 0.92;
+}
+.dots-container {
+  display: inline-flex;
+  margin-left: 0.2em;
+  letter-spacing: 0.08em;
+}
+.dot {
+  display: inline-block;
+  animation: dot-come-and-blink 1.8s infinite ease-in-out both;
+}
+.dot:nth-child(1) { animation-delay: 0s; }
+.dot:nth-child(2) { animation-delay: 0.25s; }
+.dot:nth-child(3) { animation-delay: 0.5s; }
+.dot:nth-child(4) { animation-delay: 0.75s; }
+
+@keyframes dot-come-and-blink {
+  0%, 15% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  35%, 75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
 
 @keyframes travel { from { transform: translateX(-18%); } to { transform: translateX(18%); } }
 @keyframes wheel-roll { from { transform: rotate(-105deg); } to { transform: rotate(105deg); } }
-@keyframes dots { 0% { width: 0; } 100% { width: 1.2em; } }
 
 @media (max-aspect-ratio: 1/1) {
   /* Portrait artwork (896x1200): fit by width — viewport is taller than wide,
@@ -144,12 +179,11 @@ body { background: #ffffff; overflow: hidden; }
   .poster { width: 100%; aspect-ratio: 896 / 1200; }
   .rider-track { width: min(78vw, 38vh); width: min(78vw, 38dvh); left: 13%; bottom: 19%; }
   .poster-copy { left: 12%; bottom: 6.5%; }
-  .poster-title { font-size: clamp(25px, 7.8vw, 64px); }
-  .poster-subtitle { font-size: clamp(13px, 3.8vw, 24px); }
-  .poster-location { font-size: clamp(11px, 3vw, 18px); }
-  .poster-status { font-size: clamp(13px, 3.8vw, 23px); }
+  .poster-title-kicker { font-size: clamp(14px, 4.2vw, 32px); margin-bottom: 0.1em; }
+  .poster-title-main { font-size: clamp(24px, 7.8vw, 64px); }
+  .poster-status { font-size: clamp(12px, 3.6vw, 22px); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .rider-track, .wheel, .loading-dots::after { animation: none; }
-  .loading-dots::after { width: 1.2em; }
+  .rider-track, .wheel, .dot { animation: none; }
+  .dot { opacity: 1; transform: none; }
 }

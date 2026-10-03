@@ -8,16 +8,16 @@ import wheel from "@/assets/sibaq-wheel.svg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sibaq 2026 | Darul Huda National Arts Fest - Chemmad, Kerala" },
-      { name: "description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
-      { name: "keywords", content: "Sibaq 2026, Sibaq, Darul Huda National Arts fest, Chemmad, Kerala, DHIU, Arts Festival" },
-      { property: "og:title", content: "Sibaq 2026 | Darul Huda National Arts Fest" },
-      { property: "og:description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
+      { title: "DARUL HUDA SIBĀQ 2026" },
+      { name: "description", content: "DARUL HUDA SIBĀQ 2026" },
+      { name: "keywords", content: "DARUL HUDA SIBĀQ 2026, Sibaq 2026, Darul Huda, Sibaq" },
+      { property: "og:title", content: "DARUL HUDA SIBĀQ 2026" },
+      { property: "og:description", content: "DARUL HUDA SIBĀQ 2026" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Sibaq 2026" },
+      { property: "og:site_name", content: "DARUL HUDA SIBĀQ 2026" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Sibaq 2026 | Darul Huda National Arts Fest" },
-      { name: "twitter:description", content: "Sibaq 2026 — Darul Huda National Arts fest. Chemmad, Kerala." },
+      { name: "twitter:title", content: "DARUL HUDA SIBĀQ 2026" },
+      { name: "twitter:description", content: "DARUL HUDA SIBĀQ 2026" },
     ],
     links: [
       { rel: "preload", as: "image", href: landscape },
@@ -83,14 +83,14 @@ function Index() {
       <div
         className={`site-loader ${isLoaded ? "is-hidden" : ""}`}
         aria-hidden={isLoaded}
-        aria-label="Loading Sibaq 2026"
+        aria-label="Loading DARUL HUDA SIBĀQ 2026"
       >
         <div className="loader-spinner" role="status" aria-label="Loading..." />
       </div>
 
       <main
         className="coming-soon"
-        aria-label="Sibaq 2026 - Darul Huda National Arts fest, Chemmad, Kerala"
+        aria-label="DARUL HUDA SIBĀQ 2026"
       >
         <div className={`poster ${isLoaded ? "is-ready" : ""}`}>
           <picture>
@@ -98,7 +98,7 @@ function Index() {
             <img
               className="poster-background"
               src={landscape}
-              alt="Sibaq 2026 - Darul Huda National Arts fest, Chemmad, Kerala"
+              alt="DARUL HUDA SIBĀQ 2026"
             />
           </picture>
           <div className="rider-track" aria-hidden="true">
@@ -107,9 +107,19 @@ function Index() {
             <img className="rider" src={rider} alt="" />
           </div>
           <div className="poster-copy">
-            <h1 className="poster-title">Sibaq 2026</h1>
-            <p className="poster-subtitle">Darul Huda National Arts fest.</p>
-            <p className="poster-location">Chemmad, Kerala.</p>
+            <h1 className="poster-title" aria-label="DARUL HUDA SIBĀQ 2026">
+              <span className="poster-title-kicker">DARUL HUDA</span>
+              <span className="poster-title-main">SIBĀQ 2026</span>
+            </h1>
+            <p className="poster-status">
+              <span>Something is Loading</span>
+              <span className="dots-container" aria-hidden="true">
+                <span className="dot">.</span>
+                <span className="dot">.</span>
+                <span className="dot">.</span>
+                <span className="dot">.</span>
+              </span>
+            </p>
           </div>
         </div>
       </main>
