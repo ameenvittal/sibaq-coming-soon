@@ -43,6 +43,7 @@ body { background: #ffffff; overflow: hidden; }
   aspect-ratio: 1264 / 848;
   overflow: hidden;
   isolation: isolate;
+  transition: opacity 0.5s ease-in-out;
 }
 .poster picture { position: absolute; inset: 0; }
 .poster-background { width: 100%; height: 100%; display: block; object-fit: contain; }
@@ -90,16 +91,41 @@ body { background: #ffffff; overflow: hidden; }
   letter-spacing: 0.01em;
   opacity: 0.95;
 }
-.poster-location {
-  margin: 0.2em 0 0;
-  font-size: clamp(12px, 1.25vw, 19px);
+.poster-status {
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  margin: 0.35em 0 0;
+  font-size: clamp(13px, 1.35vw, 21px);
   font-weight: 600;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
-  opacity: 0.85;
+  letter-spacing: 0;
+  opacity: 0.88;
 }
-.poster-status { display: flex; align-items: center; gap: 0.3em; margin: 0.5em 0 0; font-size: clamp(13px, 1.4vw, 22px); letter-spacing: 0; }
 .loading-dots::after { content: '..'; display: inline-block; width: 1.2em; overflow: hidden; vertical-align: bottom; animation: dots 1.3s steps(3, end) infinite; }
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  z-index: 100;
+}
+.spinner {
+  width: 44px;
+  height: 44px;
+  border: 3.5px solid rgba(30, 41, 59, 0.12);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.poster-loading { opacity: 0; pointer-events: none; }
+.poster-ready { opacity: 1; }
 
 @keyframes travel { from { transform: translateX(-18%); } to { transform: translateX(18%); } }
 @keyframes wheel-roll { from { transform: rotate(-105deg); } to { transform: rotate(105deg); } }
@@ -113,7 +139,6 @@ body { background: #ffffff; overflow: hidden; }
   .poster-copy { left: 12%; bottom: 6.5%; }
   .poster-title { font-size: clamp(25px, 7.8vw, 64px); }
   .poster-subtitle { font-size: clamp(13px, 3.8vw, 24px); }
-  .poster-location { font-size: clamp(11px, 3vw, 18px); }
   .poster-status { font-size: clamp(13px, 3.8vw, 23px); }
 }
 @media (prefers-reduced-motion: reduce) {
