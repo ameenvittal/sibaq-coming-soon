@@ -1,0 +1,100 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --font-display: "Trebuchet MS", "Arial Rounded MT Bold", sans-serif;
+}
+
+:root {
+  --background: oklch(0.48 0.14 264);
+  --foreground: oklch(0.99 0.002 90);
+  --primary: oklch(0.66 0.19 38);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.76 0.1 28);
+  --muted-foreground: oklch(0.96 0.02 53);
+}
+
+* { box-sizing: border-box; }
+html, body, #app { width: 100%; height: 100%; margin: 0; overflow: hidden; }
+body { background: #ffffff; overflow: hidden; }
+
+.coming-soon {
+  --frame: clamp(10px, 1.6vmin, 18px);
+  width: 100%; height: 100vh; height: 100dvh;
+  overflow: hidden;
+  background: #ffffff;
+  padding: var(--frame);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.poster {
+  position: relative;
+  /* Size to the artwork's own aspect ratio (1264x848) so the full
+     painting is always visible — it scales to fit, never crops. */
+  width: min(100%, calc((100dvh - 2 * var(--frame)) * 1.4906));
+  aspect-ratio: 1264 / 848;
+  overflow: hidden;
+  isolation: isolate;
+}
+.poster picture { position: absolute; inset: 0; }
+.poster-background { width: 100%; height: 100%; display: block; object-fit: contain; }
+.rider-track {
+  position: absolute;
+  width: min(36vw, 39vh);
+  width: min(36vw, 39dvh);
+  left: 51%;
+  bottom: 13%;
+  animation: travel 4s linear infinite alternate;
+  will-change: transform;
+}
+.rider { position: relative; z-index: 1; width: 100%; display: block; }
+.wheel {
+  position: absolute;
+  z-index: 0;
+  width: 39.26%;
+  aspect-ratio: 1;
+  animation: wheel-roll 4s linear infinite alternate;
+  will-change: transform;
+}
+.wheel-rear { left: 1.84%; top: 60.18%; }
+.wheel-front { left: 62.73%; top: 57.34%; }
+.poster-copy {
+  position: absolute;
+  z-index: 2;
+  left: 8%;
+  bottom: 8.3%;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 0 2px 15px color-mix(in oklab, var(--primary) 28%, transparent);
+}
+.poster-title { margin: 0; font-size: clamp(28px, 4.6vw, 76px); letter-spacing: 0; }
+.poster-status { display: flex; align-items: center; gap: 0.3em; margin: 0.5em 0 0; font-size: clamp(13px, 1.4vw, 22px); letter-spacing: 0; }
+.loading-dots::after { content: '..'; display: inline-block; width: 1.2em; overflow: hidden; vertical-align: bottom; animation: dots 1.3s steps(3, end) infinite; }
+
+@keyframes travel { from { transform: translateX(-18%); } to { transform: translateX(18%); } }
+@keyframes wheel-roll { from { transform: rotate(-105deg); } to { transform: rotate(105deg); } }
+@keyframes dots { 0% { width: 0; } 100% { width: 1.2em; } }
+
+@media (max-aspect-ratio: 1/1) {
+  /* Portrait artwork (896x1200): fit by width — viewport is taller than wide,
+     so the full painting still fits without cropping. */
+  .poster { width: 100%; aspect-ratio: 896 / 1200; }
+  .rider-track { width: min(78vw, 38vh); width: min(78vw, 38dvh); left: 13%; bottom: 19%; }
+  .poster-copy { left: 12%; bottom: 9.5%; }
+  .poster-title { font-size: clamp(25px, 8vw, 68px); }
+  .poster-status { font-size: clamp(13px, 3.8vw, 23px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rider-track, .wheel, .loading-dots::after { animation: none; }
+  .loading-dots::after { width: 1.2em; }
+}
