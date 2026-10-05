@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import landscape from "@/assets/sibaq-landscape-bleed.png";
-import portrait from "@/assets/sibaq-portrait-bleed.png";
+import portrait from "@/assets/potrait.png";
 import rider from "@/assets/sibaq-rider-headless.png";
 import wheel from "@/assets/sibaq-wheel.svg";
 
@@ -88,18 +88,11 @@ function Index() {
         <div className="loader-spinner" role="status" aria-label="Loading..." />
       </div>
 
-      <main
-        className="coming-soon"
-        aria-label="DARUL HUDA SIBĀQ 2026"
-      >
+      <main className="coming-soon" aria-label="DARUL HUDA SIBĀQ 2026">
         <div className={`poster ${isLoaded ? "is-ready" : ""}`}>
           <picture>
             <source media="(max-aspect-ratio: 1/1)" srcSet={portrait} />
-            <img
-              className="poster-background"
-              src={landscape}
-              alt="DARUL HUDA SIBĀQ 2026"
-            />
+            <img className="poster-background" src={landscape} alt="DARUL HUDA SIBĀQ 2026" />
           </picture>
           <div className="rider-track" aria-hidden="true">
             <img className="wheel wheel-rear" src={wheel} alt="" />
